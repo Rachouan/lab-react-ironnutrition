@@ -1,26 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import foods from './foods.json';
+import { useState } from 'react';
+import {Foods} from './components/Foods' 
+import 'bulma/css/bulma.css';
 
 function App() {
+  const [foodList,setFoodList] = useState(foods);
+  const [search,setSearch] = useState('');
+  const filteredFoodList = foodList.filter(food => food.name.includes(search) );
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="container">
+        <h1 className="title">IronNutrition</h1>
+        <div className="columns">
+          <div className="column"><input type="text" className="input search-bar" name="search" placeholder="Search" onChange={(e) => setSearch(e.target.value)}/></div>
+        </div>
+        <Foods foods={filteredFoodList}/>
+      </div>
     </div>
-  );
+  )
 }
 
 export default App;
