@@ -11,9 +11,9 @@ export const Foods = ({foods}) => {
     return (
         <div className="columns">
           <div className="column">
-            {foods.map((food,i) => <Food {...food} key={i} addFood={(q) => { addFood(food,q)}}/>)}
+            {foods.map((food,i) => <Food {...food} key={i} addFood={(q)=> addFood(food,q)}/>)}
           </div>
-        <TodaysFood foods={todaysFood}/>
+          <TodaysFood foods={todaysFood}/>
         </div>
     )
 }
