@@ -6,11 +6,7 @@ export const Foods = ({foods}) => {
 
     const [todaysFood, setTodaysFood] = useState([]);
 
-    const addFood = (food,q) => { 
-        const newFood = {...food};
-        newFood.quantity = q;
-        setTodaysFood([...todaysFood,newFood]);
-    };
+    const addFood = (food,quantity) => setTodaysFood([...todaysFood,{...food,quantity}]);
 
     return (
         <div className="columns">
