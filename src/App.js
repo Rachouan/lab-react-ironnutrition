@@ -7,7 +7,7 @@ import 'bulma/css/bulma.css';
 function App() {
   const [foodList,setFoodList] = useState(foods);
   const [search,setSearch] = useState('');
-  const filteredFoodList = foodList.filter(food => food.name.includes(search) );
+  const filteredFoodList = foodList.filter(food => food.name.includes(search));
   return (
     <div className="App">
       <div className="container">

@@ -1,8 +1,11 @@
 import {useState} from 'react';
 
-export const Food = ({name,image,calories,addFood}) => {
-
+export const Food = (props) => {
+    const { dish, onAdd } = props
+    const { name,image,calories } = dish
     const [quantity,setQuantity] = useState(1);
+    const addDish = () => onAdd({ ...dish, quantity })
+    const increment = (e) => setQuantity(Math.max(e.target.value, 1))
     return (
         <div className="box" >
             <article className="media">
@@ -22,10 +25,10 @@ export const Food = ({name,image,calories,addFood}) => {
                 <div className="media-right">
                 <div className="field has-addons">
                     <div className="control">
-                    <input type="number" className="input" value={quantity} min="1" onChange={(e) => setQuantity(e.target.value > 1 ? e.target.value : 1)}/>
+                        <input type="number" className="input" value={quantity} min="1" onChange={increment}/>
                     </div>
                     <div className="control">
-                    <button className="button is-info" onClick={()=> addFood(quantity)}>+</button>
+                        <button className="button is-info" onClick={addDish}>+</button>
                     </div>
                 </div>
                 </div>
